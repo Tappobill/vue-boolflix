@@ -3,13 +3,17 @@
         <div class="card">
             <div class="card-body">
                 <img :src="`http://image.tmdb.org/t/p/w342/${singleSeries.poster_path}`" class="card-img-top" alt="">
-                <h5 class="card-title">{{ singleSeries.name }}</h5>
+                <h5 class="card-title text-danger"><span>Titolo: </span>{{ singleSeries.name }}</h5>
                 <ul>
-                    <li>{{ singleSeries.original_name }}</li>
-                    <li><img class="lingua"
+                    <li><span>Titolo originale: </span>{{ singleSeries.original_name }}</li>
+                    <li><span>Lingua: </span><img class="lingua"
                             :src="`https://www.countryflagicons.com/SHINY/64/${(singleSeries.original_language == 'en') ? 'GB' : ((singleSeries.original_language == 'ja') ? 'JP' : singleSeries.original_language.toUpperCase())}.png`"
                             alt=""></li>
-                    <li>{{ singleSeries.vote_average }}</li>
+                    <li>
+                        <span>Voto: </span>
+                        <font-awesome-icon icon="fa-solid fa-star" v-for="(index) in this.stars" :key='index' />
+                        <font-awesome-icon icon="fa-regular fa-star" v-for="(index) in this.starsVuote" :key='index' />
+                    </li>
                 </ul>
             </div>
         </div>
@@ -21,8 +25,17 @@ export default {
     name: "SerieCard",
     props: {
         singleSeries: Object
+    },
+    data() {
+        return {
+            stars: Math.ceil((this.singleSeries.vote_average / 2))
+        }
+    },
+    computed: {
+        starsVuote() {
+            return 5 - this.stars
+        }
     }
-
 }
 </script>
 
@@ -33,5 +46,10 @@ export default {
 
 .card-img-top {
     height: 300px;
+}
+
+span{
+    font-weight: bold;
+    color: black;
 }
 </style>
