@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeadComp @emitSearch="searchFilms" />
-    <MainComp :paramFilms="arrayFilms" />
+    <MainComp :paramFilms="arrayFilms"  :paramSerieTv="serieTV"/>
   </div>
 </template>
 
@@ -18,7 +18,8 @@ export default {
   },
   data() {
     return {
-      arrayFilms: []
+      arrayFilms: [],
+      serieTV: []
     }
   },
   methods: {
@@ -26,6 +27,11 @@ export default {
       axios.get('https://api.themoviedb.org/3/search/movie?api_key=9611be04af8d32f630d5c3fee8162eca&query=' + valoreRicerca)
         .then((response) => {
           this.arrayFilms = response.data.results
+        })
+
+      axios.get('https://api.themoviedb.org/3/search/tv?api_key=9611be04af8d32f630d5c3fee8162eca&query=' + valoreRicerca)
+        .then((response) => {
+          this.serieTV = response.data.results
         })
     }
   }
