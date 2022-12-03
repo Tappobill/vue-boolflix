@@ -1,5 +1,5 @@
 <template>
-    <header class="border border-primary d-flex justify-content-between align-items-center p-3">
+    <header class="border border-primary d-flex justify-content-between align-items-center p-3 bg-dark">
         <h1 class="text-danger mb-0">BOOLFLIX</h1>
         <div class="input-group w-50">
             <span class="input-group-text" id="basic-addon1">

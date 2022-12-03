@@ -27,5 +27,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+main{
+    background-color: #1e2d3b;
+}
+h2{
+    font-size: 100px;
+    color: red;
+}
 </style>
