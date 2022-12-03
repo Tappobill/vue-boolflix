@@ -43,8 +43,17 @@ export default {
 li{
     color: white;
 }
+.card:hover img{
+    display: none;
+}
+
+.card:hover .card-body{
+    display: block;
+ 
+}
 .card-body{
     background-color: #1e2d3b;
+    display: none;
 }
 .lingua {
     width: 30px;
